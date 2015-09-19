@@ -30,7 +30,11 @@ Template.main.events({
       ;
     }
     else{
-      Session.set('search_query',search_query)
+      Session.set('search_query',search_query);
+      Meteor.call('stub_hub_search_not_logged_in', search_query,function(error,result){
+        Session.set('results',result);
+        console.log(result);
+      });
       $('.jumbo-page')
         .transition({
           animation : 'fade',
