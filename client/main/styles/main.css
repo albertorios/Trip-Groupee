@@ -13,6 +13,13 @@
   text-align: center;
   margin-bottom: 50px;
 }
+.landing-page-modal-title{
+  color: #F44336;
+  font-family: 'Aguafina Script', cursive;
+  font-size: 1000%;
+  text-align: center;
+  margin-bottom: 10px;
+}
 .search-input{
   font-size: 300%;
 }

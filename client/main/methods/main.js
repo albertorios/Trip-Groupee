@@ -21,3 +21,28 @@ Template.main.helpers({
     return Session.get('results');
   }
 });
+Template.main.events({
+  'click #search-button':function(){
+    var search_query = document.getElementById('search_query').value;
+    if (search_query == '' || search_query == null || search_query == undefined) {
+      $('.ui.basic.modal')
+      .modal('show')
+      ;
+    }
+    else{
+      Session.set('search_query',search_query)
+      $('.jumbo-page')
+        .transition({
+          animation : 'fade',
+          duration  : 800
+        })
+      ;
+      Router.go('/search');
+    }
+  },
+  'keyup #search_query':function(e){
+    if (e.keyCode === 13) {
+      $('#search-button').trigger('click');
+     }
+  }
+});
