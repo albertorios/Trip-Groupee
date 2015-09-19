@@ -55,6 +55,7 @@ Meteor.methods({
       var start_date = new Date();
       var month = ('0'+ String(start_date.getMonth())).slice(-2);
       var date = ('0'+ String(start_date.getDate())).slice(-2);
+      console.log(date);
       var start_date_string = String(start_date.getFullYear()) + '-'+  month +'-' +  date +'T'+  '00:00';
       var end_date_string = String(start_date.getFullYear()+1) + '-'+  month +'-' +  date +'T'+  '00:00';
       var date_range = start_date_string + ' TO '+ end_date_string;
@@ -79,7 +80,9 @@ Meteor.methods({
         var r = results['data']['events'][i];
         if(r['title'].indexOf('PARKING') + r['title'].indexOf('parking') + r['title'].indexOf('Parking') ==-3){
           if(r['ticketInfo']['maxPrice'] !=0){
-            res.push(r);
+            if(Date.parse(r['dateLocal']) - Date.now() >0){
+              res.push(r);
+            }
           }
         }
       }
