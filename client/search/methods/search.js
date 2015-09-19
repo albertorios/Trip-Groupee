@@ -14,7 +14,7 @@ Template.search.helpers({
   results:function(){
     if(Session.get('results') != undefined){
       var res = [];
-      var results = Session.get('results')['data']['events'];
+      var results = Session.get('results');
       var start = Session.get('index');
       var end = results.length < start + 15 ? results.length : start + 15;
       for(i = start; i < end; i++){
