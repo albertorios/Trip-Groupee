@@ -12,3 +12,13 @@
   text-align: center;
   margin-bottom: 50px;
 }
+
+.list-group-item{
+  overflow:hidden;
+  position: relative;
+  display: block;
+}
+
+.glyphicon {
+    font-size: 35px;
+}

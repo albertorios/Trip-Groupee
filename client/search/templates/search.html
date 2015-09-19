@@ -1,26 +1,38 @@
 <template name="search">
-<h1 class="search-page-title"> Showing results for:</h1>
-<h1 class="search-page-query">"{{search_query}}"</h1>
-<div class="ui grid centered grid">
+<h3> Showing results for:</h3>
+<h3>"{{search_query}}"</h3>
+<div class="container"> 
+ <ul class="list-group">
   {{#each results}}
     {{#with this}}
-    <div class="row">
-      <div class="one wide column">
-        <div class="ui massive red circular label">{{day}}<div class="ui divider"></div> {{month}}/{{date}}</div>
+	<li class="list-group-item" data-toggle="collapse" href="#flight">
+      <div class="col-xs-1">
+        <div class="ui large red square label">{{day}}<div class="ui divider"></div> {{month}}/{{date}}</div>
       </div>
-      <div class="five wide column">
-        <div>
-          <h1 class="ui header event_name" data-title="Performers:" data-content="{{performers}}" data-variation="huge">{{title}}</h1>
-        </div>
+      <div class="col-xs-4">
+        <p>{{title}}</p>
       </div>
-      <div class="four wide column">
-        <h2 class="ui blue header venue_name" data-html='<i class="star icon"></i>'>{{venue_name}}</h2>
+      <div class="col-xs-4">
+        <p>{{venue_name}}</p>
+	<p>{{city}}, {{state}}, {{country}} </p>
       </div>
-      <div class="three wide column">
-        <h1 class="ui green header"> ${{min_price}}</h1>
+      <div class="col-xs-3">
+        <p> ${{min_price}}</p>
       </div>
-    </div>
+	</li>
+	<div id="flight" class="panel panel-default panel-collapse collapse">
+	  <div class="row">
+	    <div class="col-xs-2">
+	      <span class="glyphicon glyphicon-plane"></span>
+	    </div>
+	    <div class="col-xs-4">
+	  	<p>Test Text</p>
+	    </div>
+	  </div>
+	</div>
+	<br>
     {{/with}}
   {{/each}}
+  </ul>
 </div>
 </template>
