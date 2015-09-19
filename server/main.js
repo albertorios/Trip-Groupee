@@ -37,7 +37,7 @@ Meteor.methods({
             'Authorization': auth_token
           },
           params: {
-            title : search_query,
+            q : search_query
           }
         }
       );
@@ -52,6 +52,12 @@ Meteor.methods({
     var auth_token = 'Bearer LX6ohLa0a13jDTbnqkSnQeFPwNga';
 
     try {
+      var start_date = new Date();
+      var month = ('0'+ String(start_date.getMonth())).slice(-2);
+      var date = ('0'+ String(start_date.getDate())).slice(-2);
+      var start_date_string = String(start_date.getFullYear()) + '-'+  month +'-' +  date +'T'+  '00:00';
+      var end_date_string = String(start_date.getFullYear()+1) + '-'+  month +'-' +  date +'T'+  '00:00';
+      var date_range = start_date_string + ' TO '+ end_date_string;
       var results = HTTP.get("https://api.stubhubsandbox.com/search/catalog/events/v2",
         {
           headers: {
@@ -59,12 +65,25 @@ Meteor.methods({
             'Authorization': auth_token
           },
           params: {
-            title : search_query,
+            q : search_query,
+            categoryName: 'concert',
+            limit : 50,
+            sort: 'dateLocal asc',
+            date: date_range
           }
         }
       );
       //console.log(results);
-      return results;
+      var res = [];
+      for (i = 0; i != results['data']['events'].length; i++){
+        var r = results['data']['events'][i];
+        if(r['title'].indexOf('PARKING') + r['title'].indexOf('parking') + r['title'].indexOf('Parking') ==-3){
+          if(r['ticketInfo']['maxPrice'] !=0){
+            res.push(r);
+          }
+        }
+      }
+      return res;
     } catch (e) {
       console.log(e);
       return null;
