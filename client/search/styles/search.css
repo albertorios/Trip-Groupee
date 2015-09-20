@@ -1,3 +1,7 @@
+template{
+  margin: 5%;
+}
+
 .search-page-title{
   color: #F44336;
   font-family: 'Aguafina Script', cursive;
@@ -17,6 +21,7 @@
   overflow:hidden;
   position: relative;
   display: block;
+  background-color: #d8d8d8;
 }
 
 .glyphicon {
@@ -24,12 +29,12 @@
     margin: 15px;
 }
 
-ul.dropdown{
-  margin-bottom: 0px;
-}
-
 .nobottom {
   padding-bottom: 0px;
+}
+
+.pad{
+  padding: 2%;
 }
 
 .nobottom .collapsed {
@@ -40,3 +45,4 @@ ul.dropdown{
 	font-size: 20px;
 	margin: 0px;
 }
+
