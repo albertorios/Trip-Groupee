@@ -32,7 +32,7 @@ ul.dropdown{
   padding-bottom: 0px;
 }
 
-.nobottom, .collapsed {
+.nobottom .collapsed {
   padding-bottom: 10px;
 } 
 
