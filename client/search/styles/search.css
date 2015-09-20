@@ -21,6 +21,7 @@ template{
   overflow:hidden;
   position: relative;
   display: block;
+  background-color: #d8d8d8;
 }
 
 .glyphicon {
