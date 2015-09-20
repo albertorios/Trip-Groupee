@@ -43,6 +43,7 @@ Template.search.helpers({
         else {
           event_object['day'] = 'SAT';
         }
+        event_object['id'] = e['id'];
         event_object['date'] = date_time.getDate();
         event_object['month'] = date_time.getMonth() +1;
         event_object['title'] = e['title'];
