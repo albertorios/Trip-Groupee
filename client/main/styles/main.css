@@ -1,6 +1,10 @@
 @import url(https://fonts.googleapis.com/css?family=Aguafina+Script);
 @import url(https://fonts.googleapis.com/css?family=Oswald:400,300,700);
 
+body{
+  margin: 5%;
+}
+
 .jumbo-page{
   width: 100%;
   height: 100%;
@@ -51,3 +55,4 @@ video {
 .stopfade { 
    opacity: .5;
 }
+
