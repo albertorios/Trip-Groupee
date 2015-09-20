@@ -1,45 +1,66 @@
 <template name="search">
-<h3> Showing results for:</h3>
-<h3>"{{search_query}}"</h3>
-<div class="container"> 
- <ul class="list-group">
-  {{#each results}}
+  <h3> Showing results for:</h3>
+  <h3>"{{search_query}}"</h3>
+  <div class="container"> 
+   <ul class="list-group">
+    {{#each results}}
     {{#with this}}
-	<li class="list-group-item" data-toggle="collapse" href="#{{id}}">
-      <div class="col-xs-2">
-        <div class="ui large red square label">{{day}}<div class="ui divider"></div> {{month}}/{{date}}</div>
+    <li class="list-group-item nobottom" data-toggle="collapse" href="#{{id}}">  
+      <div class="row">
+        <div class="col-xs-2">
+          <div class="ui large red square label">{{day}}<div class="ui divider"></div> {{month}}/{{date}}</div>
+        </div>
+        <div class="col-xs-4">
+          <p>{{title}}</p>
+        </div>
+        <div class="col-xs-4">
+          <p>{{venue_name}}</p>
+          <p>{{city}}, {{state}}, {{country}} </p>
+        </div>
+        <div class="col-xs-2">
+          <p> ${{min_price}}</p>
+        </div>
       </div>
-      <div class="col-xs-4">
-        <p>{{title}}</p>
+      <ul id="{{id}}" class="list-group collapse">
+       <div class="row">
+         <li class="panel panel-default list-group-item">
+          <div class="col-xs-2">
+            <span class="glyphicon glyphicon-plane"></span>
+          </div>
+          <div class="col-xs-4">
+            <p>{{title}}</p>
+          </div>
+          <div class="col-xs-4">
+            <p>{{venue_name}}</p>
+            <p>{{city}}, {{state}}, {{country}} </p>
+          </div>
+          <div class="col-xs-2">
+            <p> ${{min_price}}</p>
+          </div>
+        </li>
       </div>
-      <div class="col-xs-4">
-        <p>{{venue_name}}</p>
-	<p>{{city}}, {{state}}, {{country}} </p>
-      </div>
-      <div class="col-xs-2">
-        <p> ${{min_price}}</p>
-      </div>
-	</li>
-	<div id="{{id}}" class="panel panel-default collapse">
-	  <div class="row">
-	    <div class="col-xs-2">
-	      <span class="glyphicon glyphicon-plane"></span>
-	    </div>
-      <div class="col-xs-4">
-        <p>{{title}}</p>
-      </div>
-      <div class="col-xs-4">
-        <p>{{venue_name}}</p>
-      <p>{{city}}, {{state}}, {{country}} </p>
-      </div>
-      <div class="col-xs-2">
-        <p> ${{min_price}}</p>
-      </div>
-	  </div>
-	</div>
-	<br>
-    {{/with}}
+      <li class="panel panel-default list-group-item row">
+        <div class="col-xs-2">
+          <span class="glyphicon glyphicon-plane"></span>
+        </div>
+        <div class="col-xs-4">
+          <p>{{title}}</p>
+        </div>
+        <div class="col-xs-4">
+          <p>{{venue_name}}</p>
+          <p>{{city}}, {{state}}, {{country}} </p>
+        </div>
+        <div class="col-xs-2">
+          <p> ${{min_price}}</p>
+        </div>
+      </li>
+    </ul> 
+  </li>
+  <br>
+  {{/with}}
   {{/each}}
-  </ul>
+</ul>
+
+
 </div>
 </template>

@@ -21,4 +21,13 @@
 
 .glyphicon {
     font-size: 35px;
+    margin: 15px;
 }
+
+ul.dropdown{
+  margin-bottom: 0px;
+}
+
+.nobottom:collapsed {
+  padding-bottom: 0px;
+} 
