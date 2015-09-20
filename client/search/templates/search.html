@@ -1,7 +1,6 @@
 <template name="search">
-  <h3> Showing results for:</h3>
-  <h3>"{{search_query}}"</h3>
   {{#unless results}}
+  <h3 class="search-page-query">"{{search_query}}"</h3>
   <div class="ui active inverted dimmer">
     <div class="ui text loader">Loading</div>
   </div>
