@@ -28,6 +28,15 @@ ul.dropdown{
   margin-bottom: 0px;
 }
 
-.nobottom:collapsed {
+.nobottom {
   padding-bottom: 0px;
+}
+
+.nobottom, .collapsed {
+  padding-bottom: 10px;
 } 
+
+.dollar{
+	font-size: 20px;
+	margin: 0px;
+}
