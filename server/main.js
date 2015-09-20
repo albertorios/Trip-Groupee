@@ -91,6 +91,59 @@ Meteor.methods({
       console.log(e);
       return null;
     }
+  },
+  airport_code_finder:function(lat,lon){
+    var api_key = '694c7a131eb5a458f194b18092d23dfd';
+    try {
+      var results = HTTP.get("https://airport.api.aero/airport/nearest/"+lat+"/"+lon,
+        {
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+          },
+          params: {
+            user_key : api_key
+          }
+        }
+      );
+      results=results['content'];
+      results = JSON.parse(results.slice(9,results.length-1))['airports'][0]['code'];
+      return results;
+    } catch (e) {
+      console.log(e);
+      return null;
+    }
+  },
+  venue_review:function(venue_name){
+    var api_key = '8351D44691C44D74B1F52E972258860F';
+    try {
+      var results = HTTP.get('http://api.tripadvisor.com/api/partner/2.0/search/'+encodeURI(venue_name),
+        {
+          params:{
+            key : api_key,
+            category : 'attractions'
+          }
+        }
+      );
+      return results;
+    } catch (e) {
+      console.log(e);
+      return null;
+    }
+  },
+  hotel_finder:function(lat,lon){
+    var api_key = '8351D44691C44D74B1F52E972258860F';
+    try {
+      var results = HTTP.get('http://api.tripadvisor.com/api/partner/2.0/map/'+String(lat)+','+String(lon)+'/hotels',
+        {
+          params:{
+            key : api_key
+          }
+        }
+      );
+      return results;
+    } catch (e) {
+      console.log(e);
+      return null;
+    }
   }
-
 });
