@@ -3,7 +3,6 @@
 .jumbo-page{
   width: 100%;
   height: 100%;
-  background: center url('/main/images/concert.jpg');
   background-size: 100%;
 }
 .landing-page-title{
@@ -33,4 +32,21 @@
   position: relative;
   top: 50%;
   transform: translateY(-50%);
+}
+video { 
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -100;
+    transform: translateX(-50%) translateY(-50%);
+ background: url('//tunespeak.s3.amazonaws.com/videos/home_poster.jpg') no-repeat;
+  background-size: cover;
+  transition: 1s opacity;
+}
+.stopfade { 
+   opacity: .5;
 }
