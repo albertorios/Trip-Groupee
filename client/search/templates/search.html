@@ -1,10 +1,4 @@
-<template name="search">
-  {{#unless results}}
-  <h3 class="search-page-query">"{{search_query}}"</h3>
-  <div class="ui active inverted dimmer">
-    <div class="ui text loader">Loading</div>
-  </div>
-  {{/unless}}
+<template name="search"> 
   <div class="container">
    <ul class="list-group">
     {{#each results}}
