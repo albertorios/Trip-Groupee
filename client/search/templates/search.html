@@ -1,6 +1,11 @@
 <template name="search">
   <h3> Showing results for:</h3>
   <h3>"{{search_query}}"</h3>
+  {{#unless results}}
+  <div class="ui active inverted dimmer">
+    <div class="ui text loader">Loading</div>
+  </div>
+  {{/unless}}
   <div class="container">
    <ul class="list-group">
     {{#each results}}
@@ -20,12 +25,7 @@
         <div class="col-xs-2">
           <p> ${{min_price}}</p>
         </div>
-      </div>
-      <div id="{{num}}">
-        {{#with loc}}
-          {{hotel this}}
-        {{/with}}
-      </div>
+      </div> 
       <ul id="{{id}}" class="list-group collapse">
        <div class="row">
          <li class="panel panel-default list-group-item">
@@ -45,18 +45,22 @@
         </li>
       </div>
       <li class="panel panel-default list-group-item row">
-        <div class="col-xs-2">
-          <span class="glyphicon glyphicon-plane"></span>
+        <div id="{{num}}">
+        	{{#with loc}}
+          	{{hotel this}}
+        	{{/with}}
+      	</div>
+		<div class="col-xs-2">
+          <span class="glyphicon glyphicon-home"></span>
         </div>
-        <div class="col-xs-4">
-          <p>{{title}}</p>
+        <div class="col-xs-4" id="hotelname{{num}}">
+					<p></p>
         </div>
-        <div class="col-xs-4">
-          <p>{{venue_name}}</p>
-          <p>{{city}}, {{state}}, {{country}} </p>
+        <div class="col-xs-4" id="hotelloc{{num}}">
+          <p></p>
+          <p></p>
         </div>
-        <div class="col-xs-2">
-          <p> ${{min_price}}</p>
+        <div class="col-xs-2" id="hotelprice{{num}}">
         </div>
       </li>
     </ul>
