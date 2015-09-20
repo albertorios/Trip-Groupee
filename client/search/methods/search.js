@@ -55,7 +55,7 @@ Template.search.helpers({
         event_object['country'] = e['venue']['country'];
         event_object['lat'] = e['venue']['latitude'];
         event_object['lon'] = e['venue']['longitude'];
-
+        event_object['loc'] = {'lat' :e['venue']['latitude'], 'lon': e['venue']['longitude'] };
 
         var performers = '';
         if (e['performers'] != undefined){
@@ -71,6 +71,9 @@ Template.search.helpers({
       }
       return res;
     }
+  },
+  hotel:function(loc){
+    return Meteor.call('stub_hub_search_not_logged_in',loc['lat'],loc['lan']);
   }
 });
 Template.search.events({

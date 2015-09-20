@@ -140,7 +140,22 @@ Meteor.methods({
           }
         }
       );
-      return results;
+      var new_results = results['data']['data'];
+      var res = new_results[0];
+      for(i =0; i!=new_results.length; i++){
+        var curr = new_results[i];
+        if(curr['price_level'] != null &&curr['price_level'].length != undefined ){
+          if(res['price_level'] == null || res['price_level'].length == undefined){
+            res = curr;
+          }
+          else{
+            if(curr['price_level'].length < res['price_level'].length){
+              res = curr;
+            }
+          }
+        }
+      }
+      return res;
     } catch (e) {
       console.log(e);
       return null;
