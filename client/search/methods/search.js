@@ -71,15 +71,13 @@ Template.search.helpers({
       }
       return res;
     }
-    else{
-      return false;
-    }
   },
   hotel:function(loc){
     Meteor.call('hotel_finder',loc['lat'],loc['lon'],loc['num'],function(err,res){
       console.log(res);
+      var link = '<a href="' + res['web_url'] +'" target="_blank">';
 			var divname = document.getElementById('hotelname'+loc['num']);
-			divname.getElementsByTagName('p')[0].innerHTML = res['name']+"<br/> Rating: "+res['rating']+"/5";
+			divname.getElementsByTagName('p')[0].innerHTML = link + res['name'] +'</a>' +"<br/> Rating: "+res['rating']+"/5";
 			var divloc = document.getElementById('hotelloc'+loc['num']);
 			divloc.getElementsByTagName('p')[0].innerHTML = res['location_string'];
 			var divprice = document.getElementById('hotelprice'+loc['num']);
@@ -93,7 +91,7 @@ Template.search.helpers({
 			for(var j = 0; j<count; j++){
 				divprice.appendChild(document.createElement('span'));
 				divprice.getElementsByTagName('span')[j].className = 'glyphicon glyphicon-usd dollar';
-			}		 
+			}
     });
   }
 });
