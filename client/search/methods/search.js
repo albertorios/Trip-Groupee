@@ -55,8 +55,8 @@ Template.search.helpers({
         event_object['country'] = e['venue']['country'];
         event_object['lat'] = e['venue']['latitude'];
         event_object['lon'] = e['venue']['longitude'];
-        event_object['loc'] = {'lat' :e['venue']['latitude'], 'lon': e['venue']['longitude'] };
-
+        event_object['loc'] = {'lat' :e['venue']['latitude'], 'lon': e['venue']['longitude'], 'num':i };
+        event_object['num'] = i;
         var performers = '';
         if (e['performers'] != undefined){
           for(j=0;j< e['performers'].length;j++){
@@ -73,7 +73,11 @@ Template.search.helpers({
     }
   },
   hotel:function(loc){
-    return Meteor.call('stub_hub_search_not_logged_in',loc['lat'],loc['lan']);
+    Meteor.call('hotel_finder',loc['lat'],loc['lon'],loc['num'],function(err,res){
+      console.log(res);
+      var d = document.getElementById(loc['num']);
+      d.innerHTML= 'Hello World';
+    });
   }
 });
 Template.search.events({
