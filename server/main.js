@@ -130,7 +130,9 @@ Meteor.methods({
       return null;
     }
   },
-  hotel_finder:function(lat,lon){
+  hotel_finder:function(lat,lon,num){
+    console.log(lat);
+    console.log(lon);
     var api_key = '8351D44691C44D74B1F52E972258860F';
     try {
       var results = HTTP.get('http://api.tripadvisor.com/api/partner/2.0/map/'+String(lat)+','+String(lon)+'/hotels',
@@ -140,7 +142,22 @@ Meteor.methods({
           }
         }
       );
-      return results;
+      var new_results = results['data']['data'];
+      var res = new_results[0];
+      for(i =0; i!=new_results.length; i++){
+        var curr = new_results[i];
+        if(curr['price_level'] != null &&curr['price_level'].length != undefined ){
+          if(res['price_level'] == null || res['price_level'].length == undefined){
+            res = curr;
+          }
+          else{
+            if(curr['price_level'].length < res['price_level'].length){
+              res = curr;
+            }
+          }
+        }
+      }
+      return res;
     } catch (e) {
       console.log(e);
       return null;
