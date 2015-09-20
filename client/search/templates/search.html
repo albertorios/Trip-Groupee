@@ -1,6 +1,11 @@
 <template name="search">
   <h3> Showing results for:</h3>
   <h3>"{{search_query}}"</h3>
+  {{#unless results}}
+  <div class="ui active inverted dimmer">
+    <div class="ui text loader">Loading</div>
+  </div>
+  {{/unless}}
   <div class="container">
    <ul class="list-group">
     {{#each results}}

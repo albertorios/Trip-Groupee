@@ -71,6 +71,9 @@ Template.search.helpers({
       }
       return res;
     }
+    else{
+      return false;
+    }
   },
   hotel:function(loc){
     Meteor.call('hotel_finder',loc['lat'],loc['lon'],loc['num'],function(err,res){
